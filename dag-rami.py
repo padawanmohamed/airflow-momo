@@ -19,12 +19,12 @@ with DAG(
     )
     task3 = BashOperator(
         task_id="task3",
-        bash_command="hostname"
+        bash_command="hostname",
         trigger_rule=TriggerRule.ONE_SUCCESS
     )
     task4 = BashOperator(
         task_id="exitone",
-        bash_command="exit 1"
+        bash_command="exit 1",
         trigger_rule=TriggerRule.ALL_FAILED
     )
     [task1, task2] >> [task3, task4]

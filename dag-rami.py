@@ -1,5 +1,6 @@
 from datetime import datetime
 from airflow import DAG
+from airflow.models.baseoperator import cross_downstream
 from airflow.utils.trigger_rule import TriggerRule
 from airflow.operators.bash import BashOperator
 with DAG(
@@ -27,4 +28,4 @@ with DAG(
         bash_command="exit 1",
         trigger_rule=TriggerRule.ALL_FAILED
     )
-    ([task1, task2] >> [task3, task4])
+    cross_downstream([task1, task2] >> [task3, task4])

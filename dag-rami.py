@@ -12,3 +12,12 @@ with DAG(
         task_id="hello",
         bash_command="echo 'Airflow est prêt sur cette EC2'; hostname; date"
     )
+    liste = BashOperator(
+        task_id="hello",
+        bash_command="ls -la"
+    )
+    show_hostname = BashOperator(
+        task_id="hello",
+        bash_command="hostname"
+    )
+    hello >> liste >> show_hostname

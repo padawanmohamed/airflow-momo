@@ -28,4 +28,4 @@ with DAG(
         bash_command="exit 1",
         trigger_rule=TriggerRule.ALL_FAILED
     )
-    cross_downstream([task1, task2] >> [task3, task4])
+    cross_downstream([task1, task2], [task3, task4])
